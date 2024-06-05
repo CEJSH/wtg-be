@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import bodyParser from 'body-parser';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 // module.hot에 접근하기위해 필수적인 선언(Typescript)
@@ -31,7 +30,7 @@ async function bootstrap() {
       'Authorization',
     );
   if (process.env.NODE_ENV === 'local') {
-    docBuilder.addServer(`http://localhost:${8000}`);
+    docBuilder.addServer(`http://localhost:${3000}`);
   }
   const config = docBuilder.build();
   const document = SwaggerModule.createDocument(app, config);
@@ -39,8 +38,8 @@ async function bootstrap() {
     swaggerOptions: { defaultModelsExpandDepth: -1 },
   });
 
-  app.use(bodyParser.json({ limit: '50mb' }));
-  app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+  // app.use(bodyParser.json({ limit: '50mb' }));
+  // app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
   await app.listen(3000);
   if (module.hot) {
     module.hot.accept();

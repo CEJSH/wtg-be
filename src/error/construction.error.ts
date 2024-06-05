@@ -1,0 +1,9 @@
+export const ConstructionError1 = '문서 생성 오류';
+export const ConstructionError2 = '이미 존재하는 문서 입니다.';
+export const ConstructionError3 = '등록되지 않는 문서 입니다.';
+export const ConstructionError4 = '테스트 케이스 생성 실패';
+export const ConstructionError5 = '테스트 케이스 연결 실패';
+export const ConstructionError6 = '문서 삭제 실패';
+export const ConstructionError7 = '문서 수정 실패';
+export const ConstructionError8 = '문서-카테고리 연결 실패';
+export const ConstructionError9 = '마지막버전의 문서를 수정해야합니다.';
