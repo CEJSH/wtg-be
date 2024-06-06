@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { BuildingPermitInfoEntity } from './entity/building-permit-info.entity';
 import { ApiModule } from './api/api.module';
 import { HousePermitInfoEntity } from './entity/house-permit-info.entity';
+import { MapController } from './map/map.controller';
+import { MapService } from './map/map.service';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { HousePermitInfoEntity } from './entity/house-permit-info.entity';
     }),
     ApiModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, MapController],
+  providers: [AppService, MapService],
 })
 export class AppModule {}

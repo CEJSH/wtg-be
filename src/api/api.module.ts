@@ -3,9 +3,10 @@ import { ApiService } from './api.service';
 import { HttpModule } from '@nestjs/axios';
 import { ApiController } from './api.controller';
 import { BuildingPermitInfoEntity } from 'src/entity/building-permit-info.entity';
-import { Repository } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HousePermitInfoEntity } from 'src/entity/house-permit-info.entity';
+import { BuildingPermitInfoRepository } from 'src/repository/building-permit-info.repository';
+import { HousePermitInfoRepository } from 'src/repository/house-permit-info.repository copy';
 
 @Module({
   imports: [
@@ -14,8 +15,8 @@ import { HousePermitInfoEntity } from 'src/entity/house-permit-info.entity';
   ],
   providers: [
     ApiService,
-    Repository<BuildingPermitInfoEntity>,
-    Repository<HousePermitInfoEntity>,
+    BuildingPermitInfoRepository,
+    HousePermitInfoRepository,
   ],
   exports: [ApiService],
   controllers: [ApiController],
