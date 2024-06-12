@@ -1,6 +1,6 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { BuildingPermitInfoEntity } from 'src/entity/building-permit-info.entity';
-import { DataSource, Repository } from 'typeorm';
+import { DataSource, Like, Repository } from 'typeorm';
 
 export class BuildingPermitInfoRepository extends Repository<BuildingPermitInfoEntity> {
   constructor(
@@ -16,13 +16,19 @@ export class BuildingPermitInfoRepository extends Repository<BuildingPermitInfoE
     }
   }
 
-  async getAll() {
-    return await this.findAndCount({
-      order: {
-        stcnsDelayDay: 'DESC',
+  async getByName(name: string) {
+    const sigungu = name.slice(0, 5);
+    const bjdong = name.slice(5, 10);
+    console.log(sigungu, bjdong);
+    return await this.find({
+      where: {
+        sigunguCd: sigungu,
+        bjdongCd: bjdong,
+        realStcnsDay: Like(`${2024}%`),
       },
-    }).then((ret) => {
-      return ret;
+      order: {
+        realStcnsDay: 'DESC',
+      },
     });
   }
 }

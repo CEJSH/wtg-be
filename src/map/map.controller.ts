@@ -5,11 +5,10 @@ import { MapService } from './map.service';
 export class MapController {
   constructor(private readonly mapService: MapService) {}
 
-  @Get()
-  async drawMap(
-    @Query('address') address: string[],
-    @Query('sigudong') sigudong: string,
-  ) {
-    // return await this.mapService.drawMap(address, sigudong);
+  @Get('get-by-searched-region')
+  async getData(@Query('b_code') b_code: string) {
+    const data = await this.mapService.getBySearchedRegion(b_code);
+    console.log(data);
+    return { data: data.slice(0, 100), total: data.length };
   }
 }

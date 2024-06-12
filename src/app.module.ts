@@ -4,9 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BuildingPermitInfoEntity } from './entity/building-permit-info.entity';
 import { ApiModule } from './api/api.module';
-import { HousePermitInfoEntity } from './entity/house-permit-info.entity';
-import { MapController } from './map/map.controller';
-import { MapService } from './map/map.service';
+import { MapModule } from './map/map.module';
 
 @Module({
   imports: [
@@ -17,12 +15,13 @@ import { MapService } from './map/map.service';
       username: 'root',
       password: '1234',
       database: 'wtg',
-      entities: [BuildingPermitInfoEntity, HousePermitInfoEntity],
+      entities: [BuildingPermitInfoEntity],
       synchronize: true,
     }),
     ApiModule,
+    MapModule,
   ],
-  controllers: [AppController, MapController],
-  providers: [AppService, MapService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

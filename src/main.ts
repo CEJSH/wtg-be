@@ -30,7 +30,7 @@ async function bootstrap() {
       'Authorization',
     );
   if (process.env.NODE_ENV === 'local') {
-    docBuilder.addServer(`http://localhost:${3000}`);
+    docBuilder.addServer(`http://localhost:${8000}`);
   }
   const config = docBuilder.build();
   const document = SwaggerModule.createDocument(app, config);
@@ -40,7 +40,7 @@ async function bootstrap() {
 
   // app.use(bodyParser.json({ limit: '50mb' }));
   // app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-  await app.listen(3000);
+  await app.listen(8000);
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
