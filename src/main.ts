@@ -5,7 +5,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 // module.hot에 접근하기위해 필수적인 선언(Typescript)
 declare const module: any;
 async function bootstrap() {
-  const origin = process.env.CROSS_ORIGIN || '';
+  const CROSS_ORIGIN =
+    'http://localhost:3000,http://localhost:8201,https://admin.socket.io';
+
+  const origin = CROSS_ORIGIN || '';
   const corsOptions = {
     origin: origin.includes(',') ? origin.split(',') : [origin],
     credentials: true,
