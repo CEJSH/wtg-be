@@ -20,7 +20,7 @@ async function bootstrap() {
     cors: corsOptions,
   });
   const docBuilder = new DocumentBuilder()
-    .setTitle('WTG example')
+    .setTitle('WTG API Docs')
     .setDescription('WTG API description')
     .setVersion('1.0')
     .addBearerAuth(

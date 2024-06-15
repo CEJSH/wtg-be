@@ -12,4 +12,11 @@ export class ApiController {
     const data = await this.apiService.createData(sigunguCd, bjdongCd);
     return data;
   }
+
+  @Get('get-by-searched-region')
+  async getData(@Query('b_code') b_code: string) {
+    const data = await this.apiService.getBySearchedRegion(b_code);
+    console.log(data);
+    return { data: data.slice(0, 200), total: data.length };
+  }
 }

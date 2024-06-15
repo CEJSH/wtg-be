@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BuildingPermitInfoEntity } from './entity/building-permit-info.entity';
 import { ApiModule } from './api/api.module';
-import { MapModule } from './map/map.module';
 
 @Module({
   imports: [
@@ -19,7 +18,6 @@ import { MapModule } from './map/map.module';
       synchronize: true,
     }),
     ApiModule,
-    MapModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -11,7 +11,9 @@ export class ApiService {
     private readonly httpService: HttpService,
     private dataSource: DataSource,
   ) {}
-
+  async getBySearchedRegion(b_code: string): Promise<any> {
+    return await this.buildingPermitInfoRepository.getByName(b_code);
+  }
   // 해당 시군구 법정동 데이터 양을 파악 : totalCount 리턴
   async getTotalCount(sigunguCd: string, bjdongCd: string): Promise<any> {
     const url =
