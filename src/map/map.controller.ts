@@ -9,6 +9,6 @@ export class MapController {
   async getData(@Query('b_code') b_code: string) {
     const data = await this.mapService.getBySearchedRegion(b_code);
     console.log(data);
-    return { data: data.slice(0, 100), total: data.length };
+    return { data: data.slice(0, 200), total: data.length };
   }
 }

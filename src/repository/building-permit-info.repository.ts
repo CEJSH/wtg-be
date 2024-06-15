@@ -21,11 +21,18 @@ export class BuildingPermitInfoRepository extends Repository<BuildingPermitInfoE
     const bjdong = name.slice(5, 10);
     console.log(sigungu, bjdong);
     return await this.find({
-      where: {
-        sigunguCd: sigungu,
-        bjdongCd: bjdong,
-        realStcnsDay: Like(`${2024}%`),
-      },
+      where: [
+        {
+          sigunguCd: sigungu,
+          bjdongCd: bjdong,
+          realStcnsDay: Like('2023%'),
+        },
+        {
+          sigunguCd: sigungu,
+          bjdongCd: bjdong,
+          realStcnsDay: Like('2024%'),
+        },
+      ],
       order: {
         realStcnsDay: 'DESC',
       },
